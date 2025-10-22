@@ -192,7 +192,7 @@ class synchronized_rainbow:
         if sync_is_running:
             sync_is_running = False
             # Wait for the thread to finish cleanly
-            if threading.current_thread() is not sync_color_thread:
+            if sync_color_thread is not None and threading.current_thread() is not sync_color_thread:
                 sync_color_thread.join(timeout=0.1)
             sync_color_thread = None
 
